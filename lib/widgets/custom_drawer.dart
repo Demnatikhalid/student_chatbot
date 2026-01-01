@@ -1,3 +1,4 @@
+// lib/widgets/custom_drawer.dart
 import 'package:flutter/material.dart';
 import '../pages/profile_page.dart';
 import '../pages/settings_page.dart';
@@ -19,10 +20,13 @@ class CustomDrawer extends StatelessWidget {
             child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(radius: 30, child: Icon(Icons.person)),
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage('assets/images/khalid.jpg'),
+                ),
                 SizedBox(height: 10),
-                Text("Jean Dupont", style: TextStyle(color: Colors.white)),
-                Text("jean@example.com", style: TextStyle(color: Colors.white70)),
+                Text("Demnati Khalid", style: TextStyle(color: Colors.white)),
+                Text("khalid@gmail.com", style: TextStyle(color: Colors.white70)),
               ],
             ),
           ),

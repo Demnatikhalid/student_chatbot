@@ -1,3 +1,4 @@
+// lib/pages/profile_page.dart
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -11,10 +12,13 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const CircleAvatar(radius: 50, child: Icon(Icons.person, size: 50)),
+            const CircleAvatar(
+              radius: 50,
+              backgroundImage: AssetImage('assets/images/khalid.jpg'),
+            ),
             const SizedBox(height: 20),
-            Text("Jean Dupont", style: Theme.of(context).textTheme.bodyLarge),
-            Text("jean@example.com", style: Theme.of(context).textTheme.bodyMedium),
+            Text("Demnati Khalid", style: Theme.of(context).textTheme.bodyLarge),
+            Text("khalid@gmail.com", style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
       ),

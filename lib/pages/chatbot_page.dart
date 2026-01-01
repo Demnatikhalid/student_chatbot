@@ -26,6 +26,15 @@ class _ChatbotPageState extends State<ChatbotPage> {
     });
     _controller.clear();
 
+    // Contexte strictement Mondiapolis
+    const systemPrompt =
+        'Tu es un assistant officiel de Mondiapolis, école d\'ingénieurs à Casablanca. '
+        'Tu ne parles que de : admissions, classes préparatoires intégrées, masters d\'ingénierie, '
+        'campus, clubs étudiants, stages, double-diplômes, contacts, vie associative, '
+        'logements, restauration, sports, bibliothèque, laboratoires, partenariats. '
+        'Si la question ne concerne pas Mondiapolis, réponds : '
+        '"Je suis spécialisé sur Mondiapolis, merci de me poser une question liée à l\'école."';
+
     try {
       final dio = Dio();
       final response = await dio.post(
@@ -36,9 +45,12 @@ class _ChatbotPageState extends State<ChatbotPage> {
         }),
         data: {
           'model': 'gpt-3.5-turbo',
-          'messages': [{'role': 'user', 'content': text}],
-          'max_tokens': 150,
-          'temperature': 0.7,
+          'messages': [
+            {'role': 'system', 'content': systemPrompt},
+            {'role': 'user', 'content': text},
+          ],
+          'max_tokens': 220,
+          'temperature': 0.4,
         },
       );
 
@@ -59,7 +71,7 @@ class _ChatbotPageState extends State<ChatbotPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Chatbot")),
+      appBar: AppBar(title: const Text("Chatbot Mondiapolis")),
       body: Column(
         children: [
           Expanded(
@@ -92,8 +104,8 @@ class _ChatbotPageState extends State<ChatbotPage> {
                 Expanded(
                   child: TextField(
                     controller: _controller,
-                    decoration:
-                        const InputDecoration(hintText: "Posez une question..."),
+                    decoration: const InputDecoration(
+                      hintText: "Posez une question sur Mondiapolis..."),
                   ),
                 ),
                 IconButton(
